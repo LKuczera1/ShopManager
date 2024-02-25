@@ -20,6 +20,7 @@
             base.Dispose(disposing);
         }
 
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -28,36 +29,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            LoginTextBox = new TextBox();
+            PasswordTextBox = new TextBox();
             LogInButton = new Button();
             SettingsButton = new Button();
             LoginLabel = new Label();
             PasswordLabel = new Label();
             SuspendLayout();
             // 
-            // textBox1
+            // LoginTextBox
             // 
-            textBox1.Location = new Point(128, 139);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(148, 23);
-            textBox1.TabIndex = 0;
+            LoginTextBox.Location = new Point(125, 139);
+            LoginTextBox.Name = "LoginTextBox";
+            LoginTextBox.Size = new Size(150, 23);
+            LoginTextBox.TabIndex = 0;
             // 
-            // textBox2
+            // PasswordTextBox
             // 
-            textBox2.Location = new Point(127, 183);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(149, 23);
-            textBox2.TabIndex = 1;
+            PasswordTextBox.Location = new Point(124, 183);
+            PasswordTextBox.Name = "PasswordTextBox";
+            PasswordTextBox.Size = new Size(151, 23);
+            PasswordTextBox.TabIndex = 1;
             // 
             // LogInButton
             // 
-            LogInButton.Location = new Point(128, 228);
+            LogInButton.Location = new Point(124, 231);
             LogInButton.Name = "LogInButton";
-            LogInButton.Size = new Size(148, 23);
+            LogInButton.Size = new Size(151, 23);
             LogInButton.TabIndex = 2;
             LogInButton.Text = "Login";
             LogInButton.UseVisualStyleBackColor = true;
+            LogInButton.Click += LogInButton_Click;
             // 
             // SettingsButton
             // 
@@ -71,7 +73,7 @@
             // LoginLabel
             // 
             LoginLabel.AutoSize = true;
-            LoginLabel.Location = new Point(127, 121);
+            LoginLabel.Location = new Point(124, 121);
             LoginLabel.Name = "LoginLabel";
             LoginLabel.Size = new Size(37, 15);
             LoginLabel.TabIndex = 4;
@@ -81,7 +83,7 @@
             // PasswordLabel
             // 
             PasswordLabel.AutoSize = true;
-            PasswordLabel.Location = new Point(127, 165);
+            PasswordLabel.Location = new Point(124, 165);
             PasswordLabel.Name = "PasswordLabel";
             PasswordLabel.Size = new Size(57, 15);
             PasswordLabel.TabIndex = 5;
@@ -91,13 +93,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(401, 417);
+            ClientSize = new Size(384, 416);
             Controls.Add(PasswordLabel);
             Controls.Add(LoginLabel);
             Controls.Add(SettingsButton);
             Controls.Add(LogInButton);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(PasswordTextBox);
+            Controls.Add(LoginTextBox);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "LoginWindow";
             StartPosition = FormStartPosition.CenterScreen;
@@ -105,15 +107,27 @@
             Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
+
+
+
+            // 
+            // AuthorDefinedObjects
+            // 
+            _connector = new DatabaseConnector();
+
+
         }
 
         #endregion
 
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox LoginTextBox;
+        private TextBox PasswordTextBox;
         private Button LogInButton;
         private Button SettingsButton;
         private Label LoginLabel;
         private Label PasswordLabel;
+
+
+        DatabaseConnector _connector;
     }
 }

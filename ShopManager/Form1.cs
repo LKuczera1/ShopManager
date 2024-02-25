@@ -16,5 +16,10 @@ namespace ShopManager
         {
 
         }
+
+        private void LogInButton_Click(object sender, EventArgs e)
+        {
+            _connector.databaseQuery("insert into produkty values(\'meth\')");
+        }
     }
 }
