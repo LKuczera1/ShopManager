@@ -84,7 +84,7 @@ public class DatabaseConnector
             MessageBox.Show("An error occured while sending query to database", "Error", MessageBoxButtons.OK);
         }
     }
-    public void databaseQuery(string query)
+    public DataSet databaseQuery(string query)
     {
         _command.Connection = _connection;
         _command.CommandText = query;
@@ -100,5 +100,7 @@ public class DatabaseConnector
         }
 
         _dataAdapter.Fill(_dataSet);
+
+        return _dataSet;
     }
 }

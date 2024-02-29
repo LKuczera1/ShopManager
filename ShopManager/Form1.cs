@@ -1,3 +1,5 @@
+using System.Data;
+
 namespace ShopManager
 {
     public partial class LoginWindow : Form
@@ -19,7 +21,8 @@ namespace ShopManager
 
         private void LogInButton_Click(object sender, EventArgs e)
         {
-            //_connector.databaseQuery("insert into produkty values(\'Hello\')");
+            DataSet answer = _connector.databaseQuery("select * from worker where login = " + LoginTextBox.Text);
+            Console.WriteLine(answer.Tables[0].Rows.Count);
         }
     }
 }
