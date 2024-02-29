@@ -98,5 +98,7 @@ public class DatabaseConnector
         {
             MessageBox.Show("An error occured while sending query to database", "Error", MessageBoxButtons.OK);
         }
+
+        _dataAdapter.Fill(_dataSet);
     }
 }

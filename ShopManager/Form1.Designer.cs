@@ -40,6 +40,7 @@
             // LoginTextBox
             // 
             LoginTextBox.Location = new Point(125, 139);
+            LoginTextBox.MaxLength = 32;
             LoginTextBox.Name = "LoginTextBox";
             LoginTextBox.Size = new Size(150, 23);
             LoginTextBox.TabIndex = 0;
@@ -47,7 +48,9 @@
             // PasswordTextBox
             // 
             PasswordTextBox.Location = new Point(124, 183);
+            PasswordTextBox.MaxLength = 32;
             PasswordTextBox.Name = "PasswordTextBox";
+            PasswordTextBox.PasswordChar = '*';
             PasswordTextBox.Size = new Size(151, 23);
             PasswordTextBox.TabIndex = 1;
             // 
@@ -107,15 +110,6 @@
             Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
-
-
-
-            // 
-            // AuthorDefinedObjects
-            // 
-            _connector = new DatabaseConnector();
-
-
         }
 
         #endregion
