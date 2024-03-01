@@ -5,13 +5,14 @@ GO
 use shop_database
 
 
-create table workers(
-worker_id int primary key identity(0,1),
-login varchar(32) unique,
-password varchar(32),
-name varchar(32),
-surname varchar(32))
+create table employees(
+employee_id int primary key identity(0,1),
+login varchar(32) unique not null,
+password varchar(32) not null,
+name varchar(32) not null,
+surname varchar(32) not null,
+check (password!=''))
 
-insert into worker values('test','test','test','test');
+insert into employees values('John14','1111','John','Smith');
 
 --DROP DATABASE SHOP_DATABASE

@@ -21,16 +21,25 @@ namespace ShopManager
 
         private void LogInButton_Click(object sender, EventArgs e)
         {
-            //DataSet answer = _connector.databaseQuery("select * from worker where login = " + LoginTextBox.Text);
-            DataTable answer = _connector.databaseQuery("select * from worker");
+            DataTable answer = _connector.databaseQuery("select * from employees where login = '" + LoginTextBox.Text+"'");
 
 
             if(answer.IsInitialized)
             {
                 int y_size = answer.Columns.Count;
                 int x_size = answer.Rows.Count;
-                
 
+                if(x_size==0) MessageBox.Show("User with this login does not exists", "User not fund", MessageBoxButtons.OK);
+
+                for(int i=0;i<x_size;i++)
+                {
+                    if (answer.Rows[i][2].ToString() == PasswordTextBox.Text.ToString())
+                    {
+
+                    }
+                }
+
+                MessageBox.Show("Invalid Password", "Invalid Password", MessageBoxButtons.OK);
             }
         }
     }
