@@ -21,7 +21,8 @@ namespace ShopManager
 
         private void LogInButton_Click(object sender, EventArgs e)
         {
-            DataSet answer = _connector.databaseQuery("select * from worker where login = " + LoginTextBox.Text);
+            //DataSet answer = _connector.databaseQuery("select * from worker where login = " + LoginTextBox.Text);
+            DataSet answer = _connector.databaseQuery("select * from worker");
             Console.WriteLine(answer.Tables[0].Rows.Count);
         }
     }

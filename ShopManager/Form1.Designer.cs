@@ -110,6 +110,8 @@
             Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
+
+            userDefinedInitialization();
         }
 
         #endregion
@@ -123,5 +125,11 @@
 
 
         DatabaseConnector _connector;
+
+
+        void userDefinedInitialization()
+        {
+            _connector = new DatabaseConnector("DESKTOP-25RR54T", "shop_database");
+        }
     }
 }
