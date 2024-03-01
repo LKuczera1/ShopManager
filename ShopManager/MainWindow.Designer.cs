@@ -1,0 +1,61 @@
+﻿namespace ShopManager
+{
+    partial class MainWindow
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            LogoffButton = new Button();
+            SuspendLayout();
+            // 
+            // LogoffButton
+            // 
+            LogoffButton.Location = new Point(12, 381);
+            LogoffButton.Name = "LogoffButton";
+            LogoffButton.Size = new Size(75, 23);
+            LogoffButton.TabIndex = 0;
+            LogoffButton.Text = "Logoff";
+            LogoffButton.UseVisualStyleBackColor = true;
+            LogoffButton.Click += button1_Click;
+            // 
+            // MainWindow
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(384, 416);
+            Controls.Add(LogoffButton);
+            Name = "MainWindow";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "MainWindow";
+            Load += MainWindow_Load;
+            ResumeLayout(false);
+        }
+
+        #endregion
+
+        private Button LogoffButton;
+    }
+}

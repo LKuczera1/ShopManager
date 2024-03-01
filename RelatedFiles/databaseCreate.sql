@@ -13,6 +13,4 @@ name varchar(32) not null,
 surname varchar(32) not null,
 check (password!=''))
 
-insert into employees values('John14','1111','John','Smith');
-
 --DROP DATABASE SHOP_DATABASE

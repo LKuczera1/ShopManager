@@ -4,6 +4,8 @@ namespace ShopManager
 {
     public partial class LoginWindow : Form
     {
+
+        MainWindow _mainWindow;
         public LoginWindow()
         {
             InitializeComponent();
@@ -35,7 +37,16 @@ namespace ShopManager
                 {
                     if (answer.Rows[i][2].ToString() == PasswordTextBox.Text.ToString())
                     {
-                        //access granted
+                        _mainWindow = new MainWindow(this, new employee((int)answer.Rows[0][0], answer.Rows[0][1].ToString(), answer.Rows[0][3].ToString(), answer.Rows[0][4].ToString()));
+                        _mainWindow.Show();
+
+
+
+                        this.Hide();
+                        LoginTextBox.Text = "";
+                        PasswordTextBox.Text = "";
+                        _mainWindow.Text += " as " + _mainWindow.Employee.Name;
+
                         return;
                     }
                 }
