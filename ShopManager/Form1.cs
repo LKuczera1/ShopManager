@@ -35,6 +35,7 @@ namespace ShopManager
                 {
                     if (answer.Rows[i][2].ToString() == PasswordTextBox.Text.ToString())
                     {
+                        //access granted
                         return;
                     }
                 }
