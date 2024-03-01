@@ -37,7 +37,7 @@ public class DatabaseConnector
 	private SqlConnection _connection;
     private SqlCommand _command;
     private SqlDataAdapter _dataAdapter;
-    private DataSet _dataSet;
+    private DataTable _dataTable;
 
     private DatabaseConnector()
     {
@@ -48,7 +48,7 @@ public class DatabaseConnector
         try
         {
             _connection = new SqlConnection(_connectionParameters);
-            _connection.Open();
+            //_connection.Open();
 
             _command = new SqlCommand();
 
@@ -56,7 +56,7 @@ public class DatabaseConnector
 
             _dataAdapter = new SqlDataAdapter();
 
-            _dataSet = new DataSet();
+            _dataTable = new DataTable();
         }
         catch (Exception e)
         {
@@ -73,7 +73,6 @@ public class DatabaseConnector
         try
         {
             _connection = new SqlConnection(_connectionParameters);
-            _connection.Open();
 
             _command = new SqlCommand();
 
@@ -81,7 +80,7 @@ public class DatabaseConnector
 
             _dataAdapter = new SqlDataAdapter();
 
-            _dataSet = new DataSet();
+            _dataTable = new DataTable();
         }
         catch (Exception e)
         {
@@ -97,6 +96,7 @@ public class DatabaseConnector
 
     public void databaseNonQuery(string query)
     {
+        _connection.Open();
         _command.Connection = _connection;
         _command.CommandText = query;
 
@@ -108,37 +108,32 @@ public class DatabaseConnector
         {
             MessageBox.Show("An error occured while sending query to database", "Error", MessageBoxButtons.OK);
         }
+        _connection.Close();
     }
-    public DataSet databaseQuery(string query)
+    public DataTable databaseQuery(string query)
     {
+        _connection.Open();
+        _dataAdapter.SelectCommand = _command;
+
+
         _command.Connection = _connection;
         _command.CommandText = query;
+        _command.CommandType = CommandType.Text;
+
+        _dataTable.Clear();
 
         try
         {
-            SqlDataReader reader =  _command.ExecuteReader();
-            try
-            {
-                while (reader.Read())
-                {
-                    Console.WriteLine(reader[0].ToString() + reader[1].ToString() + reader[2].ToString() + reader[3].ToString() + reader[4].ToString());
-                }
-                reader.Close(); //jest bałagan, nie wiem co robić dalej
-                //Ale udalo nam sie odczytac co zwraca baza danych.
-                //notka: Dodawac wiecej komentarzy
-
-                reader = null;
-            }
-            catch(Exception ee)
-            {
-
-            }
+            _dataAdapter.Fill(_dataTable);
         }
         catch (Exception e)
         {
             MessageBox.Show("An error occured while sending query to database", "Error", MessageBoxButtons.OK);
         }
 
-        return _dataSet;
+
+        _connection.Close();
+
+        return _dataTable;
     }
 }
